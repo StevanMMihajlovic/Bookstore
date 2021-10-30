@@ -1,0 +1,23 @@
+<br>
+<div class="row prva">
+    <div class="col-1">
+        <input type="checkbox" name="discount" id="discount" [(ngModel)]="params.discount" (change)="getBooks()">
+        <label for="discount">Discount</label>
+    </div>
+    <div class="col-1">
+        <input type="checkbox" name="bestseller" id="bestseller" [(ngModel)]="params.bestseller" (change)="getBooks()">
+        <label for="bestseller">Bestseller</label>
+    </div>
+    <div  class="col-2 text-right" *ngIf="showCart">
+        <img src="assets/images/shopping-cart.jpg" width="30px"><span style="font-weight: bold;">Your cart is empty</span>
+    </div>
+    <div class="col" *ngIf="!showCart">
+        <span>Number of added books: {{noBook}}</span>
+        <span class="offset-1">Price of added books: {{sumBook}}</span>
+        <button class="btn btn-primary offset-1" type="button" (click)="openDialog(cart, sumBook)">Checkout</button>
+    </div>
+</div>
+<br>
+<div class="row">
+    <bs-book [books]="books" (newBook)="addCart($event)"></bs-book>
+</div>

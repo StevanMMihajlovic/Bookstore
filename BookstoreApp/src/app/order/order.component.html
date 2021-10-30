@@ -1,0 +1,65 @@
+<div class="container-fluid">
+    <div class="row">
+        <table class="table table-striped center">
+            <thead>
+            <tr align="center">
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Remove item</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let i of cart, index as j" align="center">
+                <td>{{j+1}}.</td>
+                <td>{{i.name}}</td>
+                <td>{{i.price}}</td>
+                <td><button class="btn btn-danger" type="button" (click)=deleteBook(j)>Remove</button></td>
+            </tr>
+            <tr>
+            </tbody>
+        </table>
+    </div>
+    <hr>
+    <div class="row offset-1">
+        <h1>Total: {{sumBook}}$</h1>
+    </div>
+    <br>
+    <div class="row offset-1">
+        <form (ngSubmit)="orderBooks()">
+            <div class="row">
+                <div class="col">
+                    <small>Address</small>
+                </div>
+                <div class="col">
+                    <input type="text" name="address" id="address" [(ngModel)]="order.address">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col">
+                    <small>Appartment:</small>
+                </div>
+                <div class="col">
+                    <input type="text" name="appartment" id="appartment" [(ngModel)]="order.appartment">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col">
+                    <small>Telephone:</small>
+                </div>
+                <div class="col">
+                    <input type="number" name="telephone" id="telephone" [(ngModel)]="order.telephone">
+                </div>
+            </div>
+            <br>
+            <div class="form-group row offset-5">
+                <div class="col">
+                    <button class="btn btn-info" type="submit">Order</button>
+                </div>
+            </div>
+            <br>
+        </form>
+    </div>
+</div>
